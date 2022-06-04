@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>luval-128x128.ico</ApplicationIcon>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Oscar Marin</Authors>
+    <Company>Oscar Marin</Company>
+    <Copyright>Oscar Marin</Copyright>
+    <PackageProjectUrl>https://github.com/marinoscar/luval-call-status-light</PackageProjectUrl>
+    <PackageIcon>LV-Luval-Logo-200x200.png</PackageIcon>
+    <RepositoryUrl>https://github.com/marinoscar/luval-call-status-light</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="luval-128x128.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\img\LV-Luval-Logo-200x200.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Luval.StatusLight.Core\Luval.StatusLight.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
