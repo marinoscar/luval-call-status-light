@@ -9,7 +9,7 @@ namespace Luval.StatusLight.Core
     /// <summary>
     /// Provides the methods to control the status light
     /// </summary>
-    public class LightController
+    public class LightController : ILightController
     {
 
         private string _key;
@@ -55,8 +55,8 @@ namespace Luval.StatusLight.Core
                 throw new LightControllerException("Unable to complete request", ex);
             }
 
-            if(response == null) throw new LightControllerException("Unable to get a response");
-            if(response.StatusCode != System.Net.HttpStatusCode.OK) throw new LightControllerException(string.Format("Failed with status {0} and message {1}", response.StatusCode, Convert.ToString(response.Content)));
+            if (response == null) throw new LightControllerException("Unable to get a response");
+            if (response.StatusCode != System.Net.HttpStatusCode.OK) throw new LightControllerException(string.Format("Failed with status {0} and message {1}", response.StatusCode, Convert.ToString(response.Content)));
         }
     }
 }

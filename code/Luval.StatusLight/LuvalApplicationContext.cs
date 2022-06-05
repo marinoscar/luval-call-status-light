@@ -8,18 +8,21 @@ using System.Threading.Tasks;
 
 namespace Luval.StatusLight
 {
+    /// <summary>
+    /// Application context for the tray application
+    /// </summary>
     public class LuvalApplicationContext : ApplicationContext
     {
         private NotifyIcon _trayIcon;
-        private DeviceStatusManager _deviceStatusManager;
+        private IStatusController _statusController;
         
         /// <summary>
         /// Creates a new instance
         /// </summary>
-        /// <param name="apiKey">The API key</param>
-        /// <param name="interval">The interval</param>
-        public LuvalApplicationContext(string apiKey, double interval)
+        /// <param name="statusController">The implementation for the <see cref="IStatusController"/></param>
+        public LuvalApplicationContext(IStatusController statusController)
         {
+            _statusController = statusController;   
             _trayIcon = new NotifyIcon()
             {
                 Icon = Resources.TrayIcon,
@@ -33,6 +36,7 @@ namespace Luval.StatusLight
                 },
                 Visible = true
             };
+            _statusController.Start();
         }
 
         void Exit(object? sender, EventArgs e)
@@ -43,11 +47,12 @@ namespace Luval.StatusLight
 
         void TurnOn(object? sender, EventArgs e)
         {
+            _statusController.LightController.TurnOn();
         }
 
         void TurnOff(object? sender, EventArgs e)
         {
-
+            _statusController.LightController.TurnOff();
         }
     }
 }
