@@ -36,7 +36,6 @@ namespace Luval.StatusLight
                 },
                 Visible = true
             };
-            _statusController.Start();
         }
 
         void Exit(object? sender, EventArgs e)
@@ -53,6 +52,14 @@ namespace Luval.StatusLight
         void TurnOff(object? sender, EventArgs e)
         {
             _statusController.LightController.TurnOff();
+        }
+
+        /// <summary>
+        /// Starts the monitoring
+        /// </summary>
+        public void Start()
+        {
+            _statusController.Start();
         }
     }
 }

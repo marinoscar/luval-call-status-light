@@ -10,8 +10,9 @@ namespace Luval.StatusLight
         [STAThread]
         static void Main(string[] args)
         {
-            var context = GetAppContext(args);
             ApplicationConfiguration.Initialize();
+            var context = GetAppContext(args);
+            context.Start();
             Application.Run(context);
         }
 
@@ -23,7 +24,8 @@ namespace Luval.StatusLight
                 new StatusController(
                     new DeviceStatusManager(
                         new DeviceStatusParams(Convert.ToDouble(consoleArgs.IntervalDuration))),
-                    new LightController(consoleArgs.ApiKey), null));
+                    new LightController(consoleArgs.ApiKey), 
+                    new DebugLogger()));
 
         }
     }

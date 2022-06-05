@@ -29,17 +29,27 @@ namespace Luval.StatusLight.Core
         public void Start()
         {
             DeviceStatusManager.DeviceStatusChanged += DeviceStatusManager_DeviceStatusChanged;
+            DeviceStatusManager.StartMonitoring();
         }
 
         private void DeviceStatusManager_DeviceStatusChanged(object? sender, DeviceStatusEventArgs e)
         {
-            if (e.CameraInUse || e.MicrophoneInUse) LightController.TurnOn();
-            else LightController.TurnOff();
+            Logger.LogInformation("Camera Status: {0}   Microphone Status: {1}", e.CameraInUse, e.MicrophoneInUse);
+            try
+            {
+                if (e.CameraInUse || e.MicrophoneInUse) LightController.TurnOn();
+                else LightController.TurnOff();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, "Failed to connect with light");
+            }
         }
 
         /// <inheritdoc/>
         public void Dispose()
         {
+            DeviceStatusManager?.StopMonitoring();
             DeviceStatusManager?.Dispose();
             DeviceStatusManager = null;
             LightController = null;

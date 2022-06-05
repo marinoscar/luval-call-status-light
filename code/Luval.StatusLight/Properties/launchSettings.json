@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Luval.StatusLight": {
+      "commandName": "Project",
+      "commandLineArgs": "/apiKey daz5SzoOS1K-CsUc3aGJGx /interval 15000"
+    }
+  }
+}

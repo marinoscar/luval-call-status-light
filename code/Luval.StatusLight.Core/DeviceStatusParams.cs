@@ -30,7 +30,7 @@ namespace Luval.StatusLight.Core
         /// <param name="testIntervalInMs">Duration of the test interval</param>
         public DeviceStatusParams(double testIntervalInMs)
         {
-
+            TestIntervalInMs = testIntervalInMs;
         }
 
         /// <summary>

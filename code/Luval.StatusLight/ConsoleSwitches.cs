@@ -55,6 +55,6 @@ namespace Luval.StatusLight
         /// <summary>
         /// Gets the duration in ms for the interval to inspect the device status
         /// </summary>
-        public string IntervalDuration { get { return this["/interval"]; } }
+        public string IntervalDuration { get { return this["/interval"] ?? "5000"; } }
     }
 }
