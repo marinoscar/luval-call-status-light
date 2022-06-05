@@ -29,9 +29,9 @@ namespace Luval.StatusLight
                 ContextMenuStrip = new ContextMenuStrip()
                 {
                     Items = {
-                        new ToolStripMenuItem("Exit", null, Exit),
                         new ToolStripMenuItem("Turn On", null, TurnOn),
-                        new ToolStripMenuItem("Turn Off", null, TurnOff)
+                        new ToolStripMenuItem("Turn Off", null, TurnOff),
+                        new ToolStripMenuItem("Exit", null, Exit)
                     }
                 },
                 Visible = true
